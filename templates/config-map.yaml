@@ -1,0 +1,8 @@
+{{- include "nectarlib.configmap" (list . "heat.configmap") -}}
+{{- define "heat.configmap" -}}
+data:
+  api-paste.ini: |
+{{- include "heat-api-paste" . | indent 4 }}
+  api_audit_map.conf: |
+{{- include "heat-audit-map" . | indent 4 }}
+{{- end -}}
