@@ -25,9 +25,6 @@ bind_port={{ .Values.api.port }}
 [audit_middleware_notifications]
 driver=log
 
-[database]
-connection={{ .Values.conf.database_connection }}
-
 [keystone_authtoken]
 auth_url={{ .Values.conf.keystone.auth_url }}
 www_authenticate_uri={{ .Values.conf.keystone.auth_url }}
@@ -43,9 +40,7 @@ service_type=orchestration
 
 [oslo_messaging_rabbit]
 amqp_durable_queues=True
-heartbeat_timeout_threshold=60
 ssl=True
-ssl_version=TLSv1_2
 
 [oslo_middleware]
 enable_proxy_headers_parsing=True
