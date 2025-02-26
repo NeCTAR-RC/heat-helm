@@ -32,9 +32,9 @@ spec:
               image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               command:
-                - heat-manage
-                - purge_deleted
-                - {{ .Values.job.db_clean.older_than_days }}
+                - 'heat-manage'
+                - 'purge_deleted'
+                - '{{ .Values.job.db_clean.older_than_days }}'
               volumeMounts:
                 - name: {{ include "nectarlib.fullname" . }}
                   mountPath: "/etc/{{ include "nectarlib.name" . }}/"
