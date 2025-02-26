@@ -21,6 +21,18 @@ job:
     command:
       - heat-manage
       - db_sync
+  db_clean:
+    enabled: true
+    # NOTE(rk760n): key rotation frequency, token expiration, active keys, and allow_expired_window should statisfy the formula
+    # max_active_keys = ((token_expiration + allow_expired_window) / rotation_frequency) + 2
+    # As expiration is 12h, max_active_keys is 7 and allow_expired_window is 48h by default,
+    # rotation_frequency need to be adjusted
+    # 12 hours
+    cron: "0 10 * * *"
+    older_than_days: 365
+    history:
+      success: 3
+      failed: 1
 
 api:
   name: heat-api

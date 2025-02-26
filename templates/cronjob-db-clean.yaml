@@ -1,0 +1,45 @@
+{{- if .Values.job.db_clean.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: heat-db-clean
+  labels:
+    {{- include "nectarlib.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.job.db_clean.cron | quote }}
+  successfulJobsHistoryLimit: {{ .Values.job.db_clean.history.success }}
+  failedJobsHistoryLimit: {{ .Values.job.db_clean.history.failed }}
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            {{- if ne (toString .Values.vault.enabled) "false" }}
+            {{- include (print .Chart.Name ".vaultAnnotations") . | nindent 12 }}
+            {{- end }}
+          labels:
+            {{- include "nectarlib.selectorLabels" . | nindent 12 }}
+        spec:
+          serviceAccountName: {{ include "nectarlib.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          restartPolicy: OnFailure
+          containers:
+            - name: heat
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.api.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command:
+                - heat-manage
+                - purge_deleted
+                - {{ .Values.job.db_clean.older_than_days }}
+              volumeMounts:
+                - name: {{ include "nectarlib.fullname" . }}
+                  mountPath: "/etc/{{ include "nectarlib.name" . }}/"
+          volumes:
+            - name: {{ include "nectarlib.fullname" . }}
+              configMap:
+                name: {{ include "nectarlib.fullname" . }}
+{{- end }}
