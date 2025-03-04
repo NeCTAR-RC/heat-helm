@@ -12,6 +12,7 @@ vault.hashicorp.com/agent-inject-template-secrets.conf: |
   {{ print "{{- with secret \"" .Values.vault.settings_secret "\" -}}" }}
   {{ print "[DEFAULT]" }}
   {{ print "transport_url={{ .Data.data.transport_url }}" }}
+  {{ print "auth_encryption_key={{ .Data.data.auth_encryption_key }}" }}
   {{ print "stack_domain_admin_password={{ .Data.data.stack_domain_admin_password }}" }}
   {{ print "[database]" }}
   {{ print "connection={{ .Data.data.database_connection }}" }}

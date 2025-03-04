@@ -3,9 +3,11 @@
 stack_domain_admin=heat_stack_admin
 stack_user_domain_name=heat
 region_name_for_services={{ .Values.conf.region_name_for_services }}
-enable_stack_abandon={{ .Values.conf.enable_stack_abandon }}
-enable_stack_adopt={{ .Values.conf.enable_stack_adopt }}
+enable_stack_abandon=True
+enable_stack_adopt=True
 debug={{ .Values.conf.debug }}
+trusts_delegated_roles={{ .Values.conf.trusts_delegated_roles }}
+num_engine_workers=4
 
 [trustee]
 auth_type=password

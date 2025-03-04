@@ -2,9 +2,8 @@
 
 conf:
   region_name_for_services:
-  enable_stack_abandon: true
-  enable_stack_adopt: true
   debug: false
+  trusts_delegated_roles: member
   keystone:
     auth_url:
     username: heat
