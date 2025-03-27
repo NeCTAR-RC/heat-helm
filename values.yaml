@@ -61,6 +61,12 @@ api:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+  volumes:
+    - name: tmp
+      emptyDir: {}
+  volume_mounts:
+    - name: tmp
+      mountPath: /tmp
   ingress:
     enabled: false
     className: ""
@@ -112,6 +118,12 @@ api_cfn:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+  volumes:
+    - name: tmp
+      emptyDir: {}
+  volume_mounts:
+    - name: tmp
+      mountPath: /tmp
   ingress:
     enabled: false
     className: ""
@@ -159,6 +171,12 @@ engine:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+  volumes:
+    - name: tmp
+      emptyDir: {}
+  volume_mounts:
+    - name: tmp
+      mountPath: /tmp
 
 
 serviceAccount:
