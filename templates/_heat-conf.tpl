@@ -44,8 +44,11 @@ memcached_servers={{ join "," .Values.conf.keystone.memcached_servers }}
 service_type=orchestration
 
 [oslo_messaging_rabbit]
-amqp_durable_queues=True
 ssl=True
+rabbit_quorum_queue=true
+rabbit_transient_quorum_queue=true
+rabbit_stream_fanout=true
+rabbit_qos_prefetch_count=1
 
 [oslo_middleware]
 enable_proxy_headers_parsing=True
