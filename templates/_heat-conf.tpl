@@ -27,6 +27,9 @@ bind_port={{ .Values.api.port }}
 [audit_middleware_notifications]
 driver=log
 
+[clients_keystone]
+auth_uri={{ .Values.conf.keystone.auth_url }}
+
 [keystone_authtoken]
 auth_url={{ .Values.conf.keystone.auth_url }}
 www_authenticate_uri={{ .Values.conf.keystone.auth_url }}
