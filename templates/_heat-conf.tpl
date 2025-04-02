@@ -29,7 +29,7 @@ driver=log
 
 [keystone_authtoken]
 auth_url={{ .Values.conf.keystone.auth_url }}
-www_authenticate_uri={{ .Values.conf.keystone.auth_url }}
+www_authenticate_uri={{ .Values.conf.keystone.auth_url }}/v3
 username={{ .Values.conf.keystone.username }}
 project_name={{ .Values.conf.keystone.project_name }}
 user_domain_name=Default
