@@ -28,7 +28,7 @@ bind_port={{ .Values.api.port }}
 driver=log
 
 [clients_keystone]
-auth_uri={{ .Values.conf.keystone.auth_url }}
+auth_uri={{ .Values.conf.clients_keystone.auth_uri }}
 
 [keystone_authtoken]
 auth_url={{ .Values.conf.keystone.auth_url }}

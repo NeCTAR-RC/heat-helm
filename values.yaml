@@ -9,6 +9,8 @@ conf:
     username: heat
     project_name: service
     memcached_servers: []
+  clients_keystone:
+    auth_uri:
 
 vault:
   role: k8s
