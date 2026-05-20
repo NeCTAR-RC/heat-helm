@@ -69,21 +69,6 @@ api:
   volume_mounts:
     - name: tmp
       mountPath: /tmp
-  ingress:
-    enabled: false
-    className: ""
-    annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-    hosts:
-      - host: chart-example.local
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
   gateway:
     enabled: false
     annotations: {}
@@ -126,21 +111,6 @@ api_cfn:
   volume_mounts:
     - name: tmp
       mountPath: /tmp
-  ingress:
-    enabled: false
-    className: ""
-    annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-    hosts:
-      - host: chart-example.local
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
   gateway:
     enabled: false
     annotations: {}
