@@ -2,8 +2,8 @@ apiVersion: v2
 name: heat
 description: A Helm chart for heat
 type: application
-version: 3.1.0
-appVersion: 24.1.0-13-g5e56c980e-2-2
+version: 3.2.0
+appVersion: 24.1.0-13-g5e56c980e-4-4
 sources:
   - https://github.com/NeCTAR-RC/heat-helm.git
 dependencies:
