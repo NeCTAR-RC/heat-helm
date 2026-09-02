@@ -44,7 +44,6 @@ memcached_servers={{ join "," .Values.conf.keystone.memcached_servers }}
 service_type=orchestration
 
 [oslo_messaging_rabbit]
-rabbit_transient_queues_ttl=600
 ssl=True
 rabbit_quorum_queue=true
 rabbit_transient_quorum_queue=true
